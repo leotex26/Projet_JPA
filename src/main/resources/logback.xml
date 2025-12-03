@@ -22,13 +22,13 @@
 
 
 
-  <!-- LOGGER PACKAGE PRINCIPAL -->
-  <logger name="fr.diginamic" level="DEBUG" additivity="true">
+  <!-- LOGGER LOAD_DATA_FROM_CSV -->
+  <logger name="fr.diginamic.AppLoadDataFromCSVIntoBDD" level="DEBUG" additivity="true">
     <appender-ref ref="STDOUT"/>
   </logger>
 
-  <!-- LOGGER SERVICE DANS LE FICHIER UNIQUEMENT -->
-  <logger name="fr.diginamic.service" level="DEBUG" additivity="false">
+  <!-- LOGGER APP CLIENT -->
+  <logger name="fr.diginamic.AppClient" level="DEBUG" additivity="false">
     <appender-ref ref="FILE"/>
   </logger>
 
