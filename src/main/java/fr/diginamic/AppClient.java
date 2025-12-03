@@ -1,6 +1,5 @@
 package fr.diginamic;
 
-import fr.diginamic.service.AppService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +9,7 @@ import org.slf4j.LoggerFactory;
 public class AppClient {
 
   /** LOGGER de l'appClient **/
-  private static final Logger LOG = LoggerFactory.getLogger(AppService.class);
+  private static final Logger LOG = LoggerFactory.getLogger(AppClient.class);
 
 
   public static void main(String[] args) {

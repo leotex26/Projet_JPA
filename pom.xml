@@ -59,7 +59,19 @@
       <artifactId>slf4j-api</artifactId>
       <version>1.7.29</version>
     </dependency>
+
+
+    <!-- spring contexte ( pour @Service et @Autowired ) -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.1.0</version>
+    </dependency>
+
+
   </dependencies>
+
+
 
 
 

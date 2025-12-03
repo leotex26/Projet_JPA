@@ -1,9 +1,16 @@
 package fr.diginamic.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Classe représentant un genre de film dans la base de données.
@@ -33,13 +40,8 @@ public class Genre {
   /**
    * Films
    */
-  @ManyToMany
-  @JoinTable(
-    name = "film_genre",
-    joinColumns = @JoinColumn(name = "genre_id"),
-    inverseJoinColumns = @JoinColumn(name = "film_id")
-  )
-  private List<Film> films = new ArrayList<>();
+  @ManyToMany(mappedBy = "genres")
+  private Set<Film> films = new HashSet<>();
 
 
   //----------------------------------------------------- GETTER / SETTER --------------------------------------------------------
@@ -49,16 +51,24 @@ public class Genre {
     return id;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
   public String getName() {
     return name;
   }
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public Set<Film> getFilms() {
+    return films;
+  }
+
+  public void setFilms(Set<Film> films) {
+    this.films = films;
   }
 
   @Override

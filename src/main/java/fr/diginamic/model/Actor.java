@@ -4,8 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Entité Actor correspondant à la meme table en base
@@ -25,7 +26,7 @@ public class Actor extends Person {
    * ses diffèrents roles
    */
   @OneToMany(mappedBy = "actor")
-  private List<Role> roles = new ArrayList<>();
+  private Set<Role> roles = new HashSet<>();
 
 
   //----------------------------------------------------- GETTER / SETTER --------------------------------------------------------
@@ -38,16 +39,15 @@ public class Actor extends Person {
     this.height = height;
   }
 
-  public List<Role> getRoles() {
+  public Set<Role> getRoles() {
     return roles;
   }
 
-  public void setRoles(List<Role> roles) {
+  public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
 
-
-  //----------------------------------------------------- METHODES --------------------------------------------------------------
+//----------------------------------------------------- METHODES --------------------------------------------------------------
 
 
 }

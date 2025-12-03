@@ -1,8 +1,14 @@
 package fr.diginamic.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Classe représentant un pays, pays d'un film, d'une personne ou d'un lieu (Place).
@@ -33,9 +39,11 @@ public class Country {
   @Column(name="url", length = 255)
   private String url;
 
-
+  /**
+   * les differentes regions du pays où ont été tournés des films
+   */
   @OneToMany(mappedBy = "country")
-  private List<Place> places;
+  private Set<Place> places = new HashSet<>();
 
 
   //----------------------------------------------------- GETTER / SETTER --------------------------------------------------------
@@ -43,6 +51,10 @@ public class Country {
 
   public int getId() {
     return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public void setId(int id) {
@@ -63,6 +75,15 @@ public class Country {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+
+  public Set<Place> getPlaces() {
+    return places;
+  }
+
+  public void setPlaces(Set<Place> places) {
+    this.places = places;
   }
 
   @Override

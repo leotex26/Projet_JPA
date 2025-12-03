@@ -1,9 +1,12 @@
 package fr.diginamic.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Entité Director (Realisateur) correspondant à la meme table en base
@@ -22,18 +25,17 @@ public class Director extends Person {
     joinColumns = @JoinColumn(name = "director_id"),
     inverseJoinColumns = @JoinColumn(name = "film_id")
   )
-  private List<Film> films = new ArrayList<>();
+  private Set<Film> films = new HashSet<>();
 
   //----------------------------------------------------- GETTER / SETTER --------------------------------------------------------
 
-  public List<Film> getFilms() {
+  public Set<Film> getFilms() {
     return films;
   }
 
-  public void setFilms(List<Film> films) {
+  public void setFilms(Set<Film> films) {
     this.films = films;
   }
-
 
 
   //----------------------------------------------------- METHODES --------------------------------------------------------------

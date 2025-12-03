@@ -1,8 +1,5 @@
 package fr.diginamic;
 
-import fr.diginamic.service.AppService;
-import org.junit.jupiter.api.*;
-
 public class MaClassTest {
 
 //  @Test

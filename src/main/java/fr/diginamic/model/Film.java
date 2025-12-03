@@ -1,9 +1,20 @@
 package fr.diginamic.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Entité Film correspondant à la meme table en base
@@ -78,7 +89,7 @@ public class Film {
     joinColumns = @JoinColumn(name = "film_id"),
     inverseJoinColumns = @JoinColumn(name = "place_id")
   )
-  private List<Place> filmingLocations = new ArrayList<>();
+  private Set<Place> filmingLocations = new HashSet<>();
 
   /**
    * le pays de production
@@ -96,7 +107,7 @@ public class Film {
     joinColumns = @JoinColumn(name = "film_id"),
     inverseJoinColumns = @JoinColumn(name = "genre_id")
   )
-  private List<Genre> genres = new ArrayList<>();
+  private Set<Genre> genres = new HashSet<>();
 
   /**
    * Langues
@@ -107,7 +118,7 @@ public class Film {
     joinColumns = @JoinColumn(name = "film_id"),
     inverseJoinColumns = @JoinColumn(name = "language_id")
   )
-  private List<Language> languages = new ArrayList<>();
+  private Set<Language> languages = new HashSet<>();
 
   /**
    * tout les réalisateurs ayant opéré sur le film
@@ -118,14 +129,14 @@ public class Film {
     joinColumns = @JoinColumn(name = "film_id"),
     inverseJoinColumns = @JoinColumn(name = "director_id")
   )
-  private List<Director> directors = new ArrayList<>();
+  private Set<Director> directors = new HashSet<>();
 
 
   /**
    * liste des plus grands roles du films
    */
   @OneToMany(mappedBy = "film")
-  private List<Role> roles = new ArrayList<>();
+  private Set<Role> roles = new HashSet<>();
 
 
 
@@ -203,14 +214,6 @@ public class Film {
     this.url = url;
   }
 
-  public List<Place> getFilmingLocations() {
-    return filmingLocations;
-  }
-
-  public void setFilmingLocations(List<Place> filmingLocations) {
-    this.filmingLocations = filmingLocations;
-  }
-
   public Country getProducerCountry() {
     return producerCountry;
   }
@@ -219,41 +222,47 @@ public class Film {
     this.producerCountry = producerCountry;
   }
 
-  public List<Genre> getGenres() {
+  public Set<Place> getFilmingLocations() {
+    return filmingLocations;
+  }
+
+  public void setFilmingLocations(Set<Place> filmingLocations) {
+    this.filmingLocations = filmingLocations;
+  }
+
+  public Set<Genre> getGenres() {
     return genres;
   }
 
-  public void setGenres(List<Genre> genres) {
+  public void setGenres(Set<Genre> genres) {
     this.genres = genres;
   }
 
-  public List<Language> getLanguages() {
+  public Set<Language> getLanguages() {
     return languages;
   }
 
-  public void setLanguages(List<Language> languages) {
+  public void setLanguages(Set<Language> languages) {
     this.languages = languages;
   }
 
-  public List<Director> getDirectors() {
+  public Set<Director> getDirectors() {
     return directors;
   }
 
-  public void setDirectors(List<Director> directors) {
+  public void setDirectors(Set<Director> directors) {
     this.directors = directors;
   }
 
-  public List<Role> getRoles() {
+  public Set<Role> getRoles() {
     return roles;
   }
 
-  public void setRoles(List<Role> roles) {
+  public void setRoles(Set<Role> roles) {
     this.roles = roles;
   }
 
-
-
-  //----------------------------------------------------- METHODES --------------------------------------------------------------
+//----------------------------------------------------- METHODES --------------------------------------------------------------
 
 
 

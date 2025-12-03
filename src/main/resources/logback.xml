@@ -21,7 +21,6 @@
 
 
 
-
   <!-- LOGGER LOAD_DATA_FROM_CSV -->
   <logger name="fr.diginamic.AppLoadDataFromCSVIntoBDD" level="DEBUG" additivity="true">
     <appender-ref ref="STDOUT"/>
