@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!-- APPENDER CONSOLE UNIQUE -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss} [%thread] %-5level %logger - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- APPENDER FICHIER -->
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>app.log</file>
+    <append>true</append>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%logger{36}] - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+
+
+
+
+
+  <!-- LOGGER PACKAGE PRINCIPAL -->
+  <logger name="fr.diginamic" level="DEBUG" additivity="true">
+    <appender-ref ref="STDOUT"/>
+  </logger>
+
+  <!-- LOGGER SERVICE DANS LE FICHIER UNIQUEMENT -->
+  <logger name="fr.diginamic.service" level="DEBUG" additivity="false">
+    <appender-ref ref="FILE"/>
+  </logger>
+
+  <!-- ROOT LOGGER -->
+  <root level="ERROR">
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+</configuration>
