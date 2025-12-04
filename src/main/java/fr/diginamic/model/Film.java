@@ -64,14 +64,14 @@ public class Film {
   /**
    * note donnée au film
    */
-  @Column(precision = 3, scale = 1)
+  @Column
   private Double rating;
 
   /**
    * résumé
    */
   @Lob
-  @Column(name = "summary")
+  @Column(name = "summary", columnDefinition = "TEXT")
   private String summary;
 
   /**

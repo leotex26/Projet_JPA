@@ -56,7 +56,7 @@ public class Place {
   /**
    * Toutes les personnes nées ici
    */
-  @OneToMany(mappedBy = "birth_place")
+  @OneToMany(mappedBy = "birthPlace")
   private Set<Person> peopleBornHere = new HashSet<>();
 
   //----------------------------------------------------- GETTER / SETTER --------------------------------------------------------

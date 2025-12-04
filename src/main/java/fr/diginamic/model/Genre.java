@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -43,6 +44,17 @@ public class Genre {
   @ManyToMany(mappedBy = "genres")
   private Set<Film> films = new HashSet<>();
 
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    Genre genre = (Genre) o;
+    return Objects.equals(name, genre.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(name);
+  }
 
   //----------------------------------------------------- GETTER / SETTER --------------------------------------------------------
 

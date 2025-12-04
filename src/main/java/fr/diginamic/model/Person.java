@@ -12,6 +12,13 @@ import jakarta.persistence.Inheritance;
 
 
 import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoField;
+import java.util.Locale;
+import java.util.Objects;
 
 /**
  * Classe mère Personne contenant la majorité des attributs de Director et Actor
@@ -20,7 +27,8 @@ import java.time.LocalDate;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person {
 
-  public Person() {}
+  public Person() {
+  }
 
   /**
    * Identifiant unique de la personne.
@@ -44,7 +52,7 @@ public class Person {
   /**
    * date de naissance
    */
-  @Column(name= "birth_date")
+  @Column(name = "birth_date")
   private LocalDate birthDate;
 
   /**
@@ -57,11 +65,22 @@ public class Person {
   /**
    * url
    */
-  @Column(name = "url",length = 255)
+  @Column(name = "url", length = 255)
   private String url;
 
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    Person person = (Person) o;
+    return Objects.equals(name, person.name) && Objects.equals(birthDate, person.birthDate);
+  }
 
-  //----------------------------------------------------- GETTER / SETTER --------------------------------------------------------
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, birthDate);
+  }
+
+//----------------------------------------------------- GETTER / SETTER --------------------------------------------------------
 
 
   public Integer getId() {
@@ -92,8 +111,8 @@ public class Person {
     return birthDate;
   }
 
-  public void setBirthDate(LocalDate birthDate) {
-    this.birthDate = birthDate;
+  public void setBirthDate(String birthDate) {
+    this.birthDate = parseBirthDate(birthDate);
   }
 
   public Place getBirthPlace() {
@@ -124,6 +143,54 @@ public class Person {
 
 
   //----------------------------------------------------- METHODES --------------------------------------------------------
+
+  public static LocalDate parseBirthDate(String str) {
+    if (str == null || str.isBlank()) return null;
+
+    str = str.trim();
+
+    // 1) Format dd/MM/yyyy
+    try {
+      DateTimeFormatter f = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+      return LocalDate.parse(str, f);
+    } catch (Exception ignored) {}
+
+    // 2) Format "d MMMM yyyy" → ex : "7 September 1931"
+    try {
+      DateTimeFormatter f = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ENGLISH);
+      return LocalDate.parse(str, f);
+    } catch (Exception ignored) {}
+
+    // 3) Format "MMMM d yyyy" → ex : "September 7 1931"
+    try {
+      DateTimeFormatter f = DateTimeFormatter.ofPattern("MMMM d yyyy", Locale.ENGLISH);
+      return LocalDate.parse(str, f);
+    } catch (Exception ignored) {}
+
+    // 4) Format "MMMM yyyy" → jour manquant
+    try {
+      DateTimeFormatter f = new DateTimeFormatterBuilder()
+        .parseCaseInsensitive()
+        .appendPattern("MMMM yyyy")
+        .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+        .toFormatter(Locale.ENGLISH);
+      return LocalDate.parse(str, f);
+    } catch (Exception ignored) {}
+
+    // 5) Format "yyyy" → mois et jour manquants
+    try {
+      DateTimeFormatter f = new DateTimeFormatterBuilder()
+        .appendPattern("yyyy")
+        .parseDefaulting(ChronoField.MONTH_OF_YEAR, 1)
+        .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+        .toFormatter();
+      return LocalDate.parse(str, f);
+    } catch (Exception ignored) {}
+
+    // Aucun format reconnu → retour null (évite crash)
+    System.err.println("⚠ Date non reconnue : " + str);
+    return null;
+  }
 
 
 

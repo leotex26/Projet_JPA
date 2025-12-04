@@ -8,6 +8,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -94,6 +95,20 @@ public class Country {
       ", url='" + url + '\'' +
       '}';
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    Country country = (Country) o;
+    return Objects.equals(name, country.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(name);
+  }
+
+
 
   //----------------------------------------------------- METHODES --------------------------------------------------------
 
