@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * gere la logique métier des Places
  */
 public class PlaceService {
-
+  /** EntityManager unique founit par la classe d'appel **/
   private final EntityManager em;
   private final CountryService countryService;
 

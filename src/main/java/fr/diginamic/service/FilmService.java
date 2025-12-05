@@ -1,20 +1,27 @@
 package fr.diginamic.service;
 
-import fr.diginamic.model.*;
+
+import fr.diginamic.model.Country;
+import fr.diginamic.model.Director;
+import fr.diginamic.model.Film;
+import fr.diginamic.model.Place;
 import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-
-import java.util.HashSet;
 import java.util.List;
 
+/**
+ * Classe de gestion de la logique métier qui permet d'importer les objets Film depuis le csv
+ * et qui permet d'echanger avec la bdd des objets Film
+ */
 public class FilmService {
 
+  /**
+   * EntityManager unique founit par la classe d'appel
+   **/
   private final EntityManager em;
   private final PlaceService placeService;
   private final GenreService genreService;
   private final LanguageService languageService;
-  private final ActorService actorService;
   private final DirectorService directorService;
   private final CountryService countryService;
 
@@ -29,7 +36,6 @@ public class FilmService {
     this.placeService = placeService;
     this.genreService = genreService;
     this.languageService = languageService;
-    this.actorService = actorService;
     this.directorService = directorService;
     this.countryService = countryService;
   }
@@ -157,7 +163,7 @@ public class FilmService {
       .getResultList();
 
     if (!existing.isEmpty()) {
-      // Le film existe déjà → mise à jour
+      // Le film existe déjà > mise à jour
       Film existingFilm = existing.get(0);
       existingFilm.setTitle(film.getTitle());
       existingFilm.setYearStart(film.getYearStart());

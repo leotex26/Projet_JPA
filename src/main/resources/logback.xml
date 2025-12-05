@@ -21,12 +21,12 @@
 
 
 
-  <!-- LOGGER LOAD_DATA_FROM_CSV -->
-<!--  <logger name="fr.diginamic.AppLoadDataFromCSVIntoBDD" level="DEBUG" additivity="true">-->
-<!--    <appender-ref ref="STDOUT"/>-->
-<!--  </logger>-->
+  <!--LOGGER LOAD_DATA_FROM_CSV -->
+ <logger name="fr.diginamic.AppLoadDataFromCSVIntoBDD" level="DEBUG" additivity="true">
+   <appender-ref ref="STDOUT"/>
+ </logger>
 
-  <!-- LOGGER APP CLIENT -->
+ <!-- LOGGER APP CLIENT --> <!-- en file parce que communication par console -->
   <logger name="fr.diginamic.AppClient" level="DEBUG" additivity="false">
     <appender-ref ref="FILE"/>
   </logger>

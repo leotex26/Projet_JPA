@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class LanguageService {
 
+  /** EntityManager unique founit par la classe d'appel **/
   private final EntityManager em;
 
   public LanguageService(EntityManager em) {

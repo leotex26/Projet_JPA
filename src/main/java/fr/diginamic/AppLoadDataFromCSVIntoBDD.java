@@ -1,9 +1,6 @@
 package fr.diginamic;
 
-import fr.diginamic.config.AppConfig;
-import fr.diginamic.model.Country;
 import fr.diginamic.service.ImportService;
-import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -16,20 +13,25 @@ import org.slf4j.LoggerFactory;
  */
 public class AppLoadDataFromCSVIntoBDD {
 
+  /**
+   * logger de la partie import csv
+   **/
   private static final Logger LOG = LoggerFactory.getLogger(AppLoadDataFromCSVIntoBDD.class);
 
+  /**
+   * thread principal
+   **/
   public static void main(String[] args) {
     LOG.info("Starting AppLoadDataFromCSVIntoBDD");
 
-    // Création de l'EntityManagerFactory et de l'EntityManager
+    /** Création de l'EntityManagerFactory et de l'EntityManager qui servira à toutes les classes services **/
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("movies_db");
     EntityManager em = emf.createEntityManager();
 
     try {
-      // Instanciation du service d'import avec l'EntityManager
       ImportService importService = new ImportService(em);
 
-      // Lancement de l'import complet
+      /**  Lancement de l'import complet des fichiers csv - leur implementation dans la bdd se fera dans les services **/
       importService.importAll();
 
     } catch (Exception e) {

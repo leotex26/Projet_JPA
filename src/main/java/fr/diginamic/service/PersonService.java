@@ -3,8 +3,13 @@ package fr.diginamic.service;
 import fr.diginamic.model.Person;
 import jakarta.persistence.EntityManager;
 
+/**
+ * gere la logique métier des entités Person
+ */
 public class PersonService {
-
+  /**
+   * EntityManager unique founit par la classe d'appel
+   **/
   private final EntityManager em;
 
   public PersonService(EntityManager em) {

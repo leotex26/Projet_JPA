@@ -1,12 +1,10 @@
 package fr.diginamic.service;
 
-
-
 import fr.diginamic.model.Actor;
-import fr.diginamic.model.Film;
 import fr.diginamic.model.Place;
 import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -18,17 +16,29 @@ import java.util.List;
 public class ActorService {
 
 
-
+  /**
+   * EntityManager unique founit par la classe d'appel
+   **/
   private final EntityManager em;
+
+  /**
+   * Nos besoins en matière de services
+   **/
   private final PlaceService placeService;
   private final PersonService personService;
 
-  public ActorService(EntityManager em, PlaceService placeService,PersonService personService) {
+  /**
+   * Constructeur
+   **/
+  public ActorService(EntityManager em, PlaceService placeService, PersonService personService) {
     this.em = em;
     this.placeService = placeService;
     this.personService = personService;
   }
 
+  /**
+   * Permet d'extraire les données du fichier acteurs.csv et d'implementer les entités Actor en bdd
+   */
   public void extractAllFromCSV() {
     em.getTransaction().begin();
     HashSet<Actor> actors = new HashSet<>();
@@ -55,17 +65,24 @@ public class ActorService {
     em.getTransaction().commit();
   }
 
+
+  /**
+   * @param s identifiant IMDB de l'Actor
+   * @return le premier résultat trouvé
+   */
   public Actor findByIMDB(String s) {
-    if (s == null || s.isBlank() ) return null;
+    if (s == null || s.isBlank()) return null;
 
     List<Actor> existing = em.createQuery(
         "SELECT a FROM Actor a WHERE a.imdbId = :imdbIdentifiant",
         Actor.class)
-      .setParameter( "imdbIdentifiant", s )
+      .setParameter("imdbIdentifiant", s)
       .getResultList();
 
     if (!existing.isEmpty()) return existing.get(0);
 
     return null;
   }
+
+
 }

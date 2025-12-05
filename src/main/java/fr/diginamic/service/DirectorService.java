@@ -1,17 +1,9 @@
 package fr.diginamic.service;
 
-//ID;IDENTITE;DATE NAISSANCE;LIEU NAISSANCE;URL;
-
-import fr.diginamic.model.Actor;
 import fr.diginamic.model.Director;
-import fr.diginamic.model.Film;
 import fr.diginamic.model.Place;
-import fr.diginamic.repository.ActorRepository;
-import fr.diginamic.repository.DirectorRepository;
 import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -23,18 +15,28 @@ import java.util.List;
  */
 @Service
 public class DirectorService {
-
+  /**
+   * EntityManager unique founit par la classe d'appel
+   **/
   private final EntityManager em;
+  /**
+   * Nos besoins en matière de services
+   **/
   private final PlaceService placeService;
-  private final PersonService personService ;
+  private final PersonService personService;
 
+  /**
+   * Constructeur
+   **/
   public DirectorService(EntityManager em, PlaceService placeService, PersonService personService) {
     this.em = em;
     this.placeService = placeService;
     this.personService = personService;
   }
 
-
+  /**
+   * Permet d'extraire les données du fichier realisateurs.csv et d'implementer les entités Director en bdd
+   */
   public void extractAllFromCSV() {
     em.getTransaction().begin();
     HashSet<Director> directors = new HashSet<>();
@@ -62,9 +64,9 @@ public class DirectorService {
 
 
   /**
-   * permet de trouver un Realisateur par son identifiant imdb
-   * @param s
-   * @return
+   * Permet de trouver un Realisateur par son identifiant imdb
+   * @param s identifiant IMDB
+   * @return Le realisateur concerné
    */
   public Director findByIMDB(String s) {
     if (s == null || s.isBlank()) return null;

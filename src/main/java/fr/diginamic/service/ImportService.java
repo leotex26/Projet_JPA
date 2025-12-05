@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManager;
  */
 public class ImportService {
 
+  /** On dispatche les differentes classes services en fonction des besoins **/
   private final EntityManager em;
   private final FilmService filmService;
   private final GenreService genreService;
@@ -32,6 +33,7 @@ public class ImportService {
     this.roleService = new RoleService(em, filmService ,actorService);
   }
 
+  /** appel des differentes methodes d'import **/
   public void importAll() {
     countryService.extractAllFromCSV();
     genreService.extractAllFromCSV();

@@ -3,9 +3,6 @@ package fr.diginamic.service;
 import fr.diginamic.model.Genre;
 import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Service;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,7 +12,9 @@ import java.util.Set;
  */
 public class GenreService {
 
-
+  /**
+   * EntityManager unique founit par la classe d'appel
+   **/
   private final EntityManager em;
 
   public GenreService(EntityManager em) {
