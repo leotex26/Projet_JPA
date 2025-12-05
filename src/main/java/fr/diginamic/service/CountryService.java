@@ -35,7 +35,7 @@ public class CountryService {
 
     for (String[] row : results) {
       Country country = new Country();
-      country.setName(row[0]);
+      country.setName(row[0].trim().toLowerCase());
       country.setUrl(row[1]);
       countries.add(country);
     }

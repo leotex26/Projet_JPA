@@ -1,13 +1,14 @@
 package fr.diginamic.service;
 
 
-import fr.diginamic.model.Country;
-import fr.diginamic.model.Director;
-import fr.diginamic.model.Film;
-import fr.diginamic.model.Place;
+import fr.diginamic.model.*;
 import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Classe de gestion de la logique métier qui permet d'importer les objets Film depuis le csv
@@ -54,7 +55,7 @@ public class FilmService {
 
       Film film = new Film();
       film.setImdbId(row[0]);
-      film.setTitle(row[1]);
+      film.setTitle(row[1].trim().toLowerCase());
       film.setYearRaw(row[2]);
 
       // Parsing années
@@ -185,6 +186,68 @@ public class FilmService {
     // Sinon persister le nouveau film
     em.persist(film);
     return film;
+  }
+
+  public Film findByName(String name) {
+    name = name.trim().toLowerCase();
+
+    TypedQuery<Film> query = em.createQuery(
+      "SELECT f FROM Film f WHERE f.title = :name", Film.class);
+    query.setParameter("name", name);
+    List<Film> results = query.getResultList();
+    if (results.isEmpty()) {
+      return null;
+    }
+    return results.get(0);
+  }
+
+  public List<Film> findAllByDate(int yearStart, int yearEnd) {
+    TypedQuery<Film> query = em.createQuery(
+      "SELECT f FROM Film f WHERE f.yearStart BETWEEN :yearStart AND :yearEnd",
+      Film.class
+    );
+
+    query.setParameter("yearStart", yearStart);
+    query.setParameter("yearEnd", yearEnd);
+
+    List<Film> results = query.getResultList();
+
+    return results.isEmpty() ? null : results;
+  }
+
+
+  public List<Film> findAllByActor(Actor firstActor, Actor secondActor) {
+
+    Set<Role> firstActorRoles = firstActor.getRoles();
+    Set<Role> secondActorRoles = secondActor.getRoles();
+    List<Film> films = new ArrayList<>();
+
+    for (Role firstRole : firstActorRoles) {
+      for (Role secondRole : secondActorRoles) {
+        if (firstRole.getFilm().equals(secondRole.getFilm())) {
+          films.add(firstRole.getFilm());
+        }
+      }
+    }
+
+    return films;
+  }
+
+  public List<Film> findByDateAndActor(int yearStart, int yearEnd, Actor actor) {
+    List<Film> films = findAllByDate(yearStart, yearEnd);
+    List<Film> result = new ArrayList<>();
+
+    for (Film film : films) {
+      Set<Role> roles = film.getRoles();
+      for (Role role : roles) {
+        if (role.getActor().equals(actor)) {
+          result.add(film);
+          break;
+        }
+      }
+    }
+
+    return result;
   }
 
 

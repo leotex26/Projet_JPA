@@ -1,0 +1,96 @@
+/* ======================
+   GENERAL APP STYLING
+   ====================== */
+
+.root {
+  -fx-background-color: #f3f3f3;
+  -fx-font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+/* ======================
+   TITLES
+   ====================== */
+
+.title {
+  -fx-font-size: 22px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #222;
+  -fx-padding: 10 0 20 0;
+}
+
+/* ======================
+   FILM CARDS
+   ====================== */
+
+.card {
+  -fx-background-color: white;
+  -fx-padding: 12;
+  -fx-border-color: #d0d0d0;
+  -fx-border-width: 1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 6, 0, 0, 2);
+}
+
+.card:hover {
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 8, 0, 0, 3);
+  -fx-cursor: hand;
+}
+
+/* ======================
+   TEXT INSIDE CARDS
+   ====================== */
+
+.card-label {
+  -fx-font-size: 16px;
+  -fx-text-fill: #333;
+}
+
+
+/* ======================
+   BUTTONS
+   ====================== */
+
+.button-main {
+  -fx-background-color: #1976d2;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-padding: 10 18;
+  -fx-background-radius: 6;
+  -fx-font-size: 14px;
+}
+
+.button-main:hover {
+  -fx-background-color: #1565c0;
+}
+
+.button-back {
+  -fx-background-color: #9e9e9e;
+  -fx-text-fill: white;
+  -fx-padding: 8 14;
+  -fx-background-radius: 6;
+  -fx-font-size: 14px;
+}
+
+.button-back:hover {
+  -fx-background-color: #757575;
+}
+
+
+/* ======================
+   INPUT TEXTFIELDS
+========================= */
+
+.text-input {
+  -fx-background-color: white;
+  -fx-border-color: #bdbdbd;
+  -fx-border-width: 1;
+  -fx-border-radius: 4;
+  -fx-background-radius: 4;
+  -fx-padding: 6;
+  -fx-font-size: 14px;
+}
+
+.text-input:focused {
+  -fx-border-color: #1976d2;
+}

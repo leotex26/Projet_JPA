@@ -1,1 +1,61 @@
 2025-12-02 11:02:06 DEBUG [fr.diginamic.service.AppService] - Traitement 1 : param = Truc
+2025-12-05 16:04:39 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 16:04:40 INFO  [fr.diginamic.AppClient] - Option 2 sélectionnée : Casting d'un film
+2025-12-05 16:04:41 INFO  [fr.diginamic.AppClient] - Option 3 sélectionnée : Films entre deux années
+2025-12-05 16:04:48 INFO  [fr.diginamic.AppClient] - Option 5 sélectionnée : Acteurs communs à deux films
+2025-12-05 16:04:49 INFO  [fr.diginamic.AppClient] - Option 4 sélectionnée : Films communs à deux acteurs
+2025-12-05 16:04:56 INFO  [fr.diginamic.AppClient] - Fin de l'application
+2025-12-05 18:21:31 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 18:22:18 INFO  [fr.diginamic.AppClient] - Acteur entré : Robert Wagner
+2025-12-05 18:32:04 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 18:32:23 INFO  [fr.diginamic.AppClient] - Acteur entré : Robert Wagner
+2025-12-05 18:36:22 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 18:36:30 INFO  [fr.diginamic.AppClient] - Acteur entré : Robert Wagner
+2025-12-05 18:41:42 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 18:41:49 INFO  [fr.diginamic.AppClient] - Acteur entré : Robert Wagner
+2025-12-05 18:44:18 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 18:44:25 INFO  [fr.diginamic.AppClient] - Acteur entré : Robert Wagner
+2025-12-05 18:46:59 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 18:47:09 INFO  [fr.diginamic.AppClient] - Acteur entré : Robert Wagner
+2025-12-05 19:08:40 INFO  [fr.diginamic.AppClient] - Option 2 sélectionnée : Casting d'un film
+2025-12-05 19:09:11 INFO  [fr.diginamic.AppClient] - Film entré : Un taxi mauve
+2025-12-05 19:11:06 INFO  [fr.diginamic.AppClient] - Option 2 sélectionnée : Casting d'un film
+2025-12-05 19:11:09 INFO  [fr.diginamic.AppClient] - Film entré : Un taxi mauve
+2025-12-05 19:15:34 INFO  [fr.diginamic.AppClient] - Option 2 sélectionnée : Casting d'un film
+2025-12-05 19:15:36 INFO  [fr.diginamic.AppClient] - Film entré : Un taxi mauve
+2025-12-05 19:16:54 INFO  [fr.diginamic.AppClient] - Option 2 sélectionnée : Casting d'un film
+2025-12-05 19:17:01 INFO  [fr.diginamic.AppClient] - Film entré : Un taxi mauve
+2025-12-05 19:19:16 INFO  [fr.diginamic.AppClient] - Fin de l'application
+2025-12-05 19:19:26 INFO  [fr.diginamic.AppClient] - Option 1 sélectionnée : Filmographie d'un acteur
+2025-12-05 19:19:36 INFO  [fr.diginamic.AppClient] - Acteur entré : Robert Wagner
+2025-12-05 19:43:22 INFO  [fr.diginamic.AppClient] - Option 3 sélectionnée : Films entre deux années
+2025-12-05 19:48:05 INFO  [fr.diginamic.AppClient] - Option 3 sélectionnée : Films entre deux années
+2025-12-05 20:26:55 INFO  [fr.diginamic.AppClient] - Option 4 sélectionnée : Films communs à deux acteurs
+2025-12-05 20:29:29 INFO  [fr.diginamic.AppClient] - Option 3 sélectionnée : Films entre deux années
+2025-12-05 20:29:46 INFO  [fr.diginamic.AppClient] - Option 3 sélectionnée : Films entre deux années
+2025-12-05 20:53:04 INFO  [fr.diginamic.AppClient] - Option 5 sélectionnée : Acteurs communs à deux films
+2025-12-05 20:55:13 WARN  [fr.diginamic.AppClient] - Au moins un des films n'a pas été trouvé
+2025-12-05 20:55:24 INFO  [fr.diginamic.AppClient] - Option 5 sélectionnée : Acteurs communs à deux films
+2025-12-05 20:55:42 WARN  [fr.diginamic.AppClient] - Au moins un des films n'a pas été trouvé
+2025-12-05 20:56:10 INFO  [fr.diginamic.AppClient] - Option 6 sélectionnée : Films entre deux années avec un acteur donné
+2025-12-05 20:56:46 INFO  [fr.diginamic.AppClient] - Option 3 sélectionnée : Films entre deux années
+2025-12-05 21:07:51 INFO  [fr.diginamic.AppClient] - Option 5 sélectionnée : Acteurs communs à deux films
+2025-12-05 21:07:59 INFO  [fr.diginamic.AppClient] - Film 1: La tour infernale
+2025-12-05 21:07:59 INFO  [fr.diginamic.AppClient] - Film 2: L'Arnaque
+2025-12-05 21:08:00 INFO  [fr.diginamic.AppClient] - Film 1 > titre : La tour infernale
+2025-12-05 21:08:00 INFO  [fr.diginamic.AppClient] - Film 2 > titre : La tour infernale
+2025-12-05 21:08:00 WARN  [fr.diginamic.AppClient] - Au moins un des films n'a pas été trouvé
+2025-12-05 21:15:07 INFO  [fr.diginamic.AppClient] - Option 5 sélectionnée : Acteurs communs à deux films
+2025-12-05 21:15:22 INFO  [fr.diginamic.AppClient] - Film 1: La tour infernale
+2025-12-05 21:15:22 INFO  [fr.diginamic.AppClient] - Film 2: Opération vol
+2025-12-05 21:15:22 INFO  [fr.diginamic.AppClient] - Film 1 > titre : La tour infernale
+2025-12-05 21:15:22 INFO  [fr.diginamic.AppClient] - Film 2 > titre : Opération vol
+2025-12-05 21:21:13 INFO  [fr.diginamic.AppClient] - Option 5 sélectionnée : Acteurs communs à deux films
+2025-12-05 21:21:33 INFO  [fr.diginamic.AppClient] - Film 1: La tour infernale
+2025-12-05 21:21:33 INFO  [fr.diginamic.AppClient] - Film 2: Opération vol
+2025-12-05 21:21:33 INFO  [fr.diginamic.AppClient] - Film 1 > titre : La tour infernale
+2025-12-05 21:21:33 INFO  [fr.diginamic.AppClient] - Film 2 > titre : Opération vol
+2025-12-05 21:22:54 INFO  [fr.diginamic.AppClient] - Option 6 sélectionnée : Films entre deux années avec un acteur donné
+2025-12-05 21:22:58 INFO  [fr.diginamic.AppClient] - Option 5 sélectionnée : Acteurs communs à deux films
+2025-12-05 21:23:18 INFO  [fr.diginamic.AppClient] - Option 6 sélectionnée : Films entre deux années avec un acteur donné
+2025-12-05 21:25:53 INFO  [fr.diginamic.AppClient] - Option 6 sélectionnée : Films entre deux années avec un acteur donné

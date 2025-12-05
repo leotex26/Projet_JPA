@@ -9,16 +9,16 @@ import jakarta.persistence.EntityManager;
 public class ImportService {
 
   /** On dispatche les differentes classes services en fonction des besoins **/
-  private final EntityManager em;
-  private final FilmService filmService;
-  private final GenreService genreService;
-  private final LanguageService languageService;
-  private final ActorService actorService;
-  private final DirectorService directorService;
-  private final PlaceService placeService;
-  private final CountryService countryService;
-  private final RoleService roleService;
-  private final PersonService personService;
+  public final EntityManager em;
+  public final FilmService filmService;
+  public final GenreService genreService;
+  public final LanguageService languageService;
+  public final ActorService actorService;
+  public final DirectorService directorService;
+  public final PlaceService placeService;
+  public final CountryService countryService;
+  public final RoleService roleService;
+  public final PersonService personService;
 
   public ImportService(EntityManager em) {
     this.em = em;

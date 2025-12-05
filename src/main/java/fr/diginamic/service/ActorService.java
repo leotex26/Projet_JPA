@@ -1,12 +1,17 @@
 package fr.diginamic.service;
 
 import fr.diginamic.model.Actor;
+import fr.diginamic.model.Film;
 import fr.diginamic.model.Place;
+import fr.diginamic.model.Role;
 import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -85,4 +90,34 @@ public class ActorService {
   }
 
 
+  public Actor findByName(String name) {
+    name = name.trim().toLowerCase();
+
+    TypedQuery<Actor> query = em.createQuery(
+      "SELECT a FROM Actor a WHERE a.name = :name", Actor.class);
+    query.setParameter("name", name);
+    List<Actor> results = query.getResultList();
+    if (results.isEmpty()) {
+      return null;
+    }
+    return results.get(0);
+  }
+
+  public List<Actor> findCommonActorsBetweenFilms(Film film1, Film film2) {
+    Set<Role> rolesFilm1 = film1.getRoles();
+    Set<Role> rolesFilm2 = film2.getRoles();
+
+    List<Actor> commonActors = new ArrayList<>();
+
+    for (Role role : rolesFilm1) {
+      for (Role role2 : rolesFilm2) {
+        if (role.getActor().getName().trim().equalsIgnoreCase(role2.getActor().getName().trim())) {
+          commonActors.add(role.getActor());
+        }
+      }
+    }
+
+    return commonActors;
+
+  }
 }
