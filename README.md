@@ -8,9 +8,9 @@ L'interface JavaFX se lance via la classe executable ```AppClient``` qui lance �
 
 Run la classe executable ```AppClient```
 
-## les informations du site 
+## les informations de l'application
 
-[site informatif](https://leotex26.github.io/Projet_JPA/)
+[site de documentation](https://leotex26.github.io/Projet_JPA/)
 
 Le document de conception est fourni dans le répertoire "/conception" à la racine du projet JPA
 
