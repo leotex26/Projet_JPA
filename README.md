@@ -3,7 +3,10 @@ Permet de consulter les informations autour de films, d'acteurs ou de réalisate
 
 Ce projet permet de consulter un ensemble de données IMDB depuis des fichiers .csv implementé dans une base de donnée SQL via la classe executable ```AppLoadDataFromCSVIntoBDD```
 L'interface JavaFX se lance via la classe executable ```AppClient``` qui lance également l'import des données.
-Donc pour lancer l'application, directement lancer appclient
+
+## Pour lancer l'application
+
+Run la classe executable ```AppClient```
 
 ## les informations du site ci-dessous 
 
