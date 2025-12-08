@@ -1,17 +1,17 @@
 package fr.diginamic.service;
 
 import fr.diginamic.model.Actor;
-import fr.diginamic.model.Director;
 import fr.diginamic.model.Film;
 import fr.diginamic.model.Role;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,44 +21,44 @@ import java.util.Set;
  */
 public class UIService {
 
-  /**
-   *
-   * @param labelText
-   * @param textFieldPrompt1
-   * @param textFieldPrompt2
-   * @param onValidate
-   * @param onBack
-   * @return
-   */
+  private Stage primaryStage;
+
+  public UIService(Stage primaryStage) {
+    this.primaryStage = primaryStage;
+  }
+
   public VBox makeBoxForInput(
     String labelText,
-    String textFieldPrompt1,
-    String textFieldPrompt2,
+    List<String> textFieldPrompts,
     Runnable onValidate,
     Runnable onBack) {
 
     Label label = new Label(labelText);
 
-    TextField textField1 = new TextField();
-    textField1.setPromptText(textFieldPrompt1);
+    // Liste des textfields générés automatiquement
+    List<TextField> fields = new ArrayList<>();
+
+    for (String prompt : textFieldPrompts) {
+      TextField tf = new TextField();
+      tf.setPromptText(prompt);
+      fields.add(tf);
+    }
 
     Button validateBtn = new Button("Valider");
     Button backBtn = new Button("< Retour");
+    backBtn.setStyle("-fx-background-color: #C4C4C4;");
 
-    // Actions
     validateBtn.setOnAction(e -> onValidate.run());
     backBtn.setOnAction(e -> onBack.run());
 
-    VBox page;
+    HBox buttons = new HBox(20, backBtn, validateBtn);
+    buttons.setAlignment(Pos.CENTER);
 
-    TextField textField2 = new TextField();
-    if (textFieldPrompt2 != null) {
-      textField2.setPromptText(textFieldPrompt2);
-      page = new VBox(15, label, textField1, textField2, validateBtn, backBtn);
-    }else{
-      page = new VBox(15, label, textField1, validateBtn, backBtn);
-    }
-
+    // Construction dynamique de la VBox
+    VBox page = new VBox(15);
+    page.getChildren().add(label);
+    page.getChildren().addAll(fields); // ajoute tous les champs sans duplication
+    page.getChildren().add(buttons);
 
     page.setAlignment(Pos.CENTER);
     page.setStyle("-fx-padding: 20;");
@@ -66,27 +66,11 @@ public class UIService {
     return page;
   }
 
-  /**
-   *
-   * @param labelText
-   * @param textFieldPrompt1
-   * @param onValidate
-   * @param onBack
-   * @return
-   */
-  public VBox makeBoxForInput(
-    String labelText,
-    String textFieldPrompt1,
-    Runnable onValidate,
-    Runnable onBack) {
-
-    return makeBoxForInput(labelText,textFieldPrompt1,null,onValidate,onBack);
-  }
 
   /**
-   *
+   * Voir tout les films d'un actor
    * @param actor
-   * @return
+   * @return la vbox a setter au stage
    */
   public VBox displayActorFilms(Actor actor) {
     // Récupérer tous les films via les rôles
@@ -118,9 +102,9 @@ public class UIService {
   }
 
   /**
-   *
-   * @param film
-   * @return
+   * la box avec tout les acteurs du film passé en paramètre et leur role
+   * @param film : film concerné
+   * @return la vbox a setter au stage
    */
   public VBox displayActorsOfFilm(Film film) {
 
@@ -158,7 +142,13 @@ public class UIService {
     return box;
   }
 
-
+  /**
+   * créer la box avec les deux dates min et max et la liste des films concernés
+   * @param yearStart : année min
+   * @param yearEnd : année max
+   * @param films : liste des films a afficher
+   * @return la vbox a setter au stage
+   */
   public VBox displayFilmsBetweenYears(int yearStart, int yearEnd, List<Film> films) {
 
     // Titre
@@ -188,7 +178,13 @@ public class UIService {
 
   }
 
-
+  /**
+   * créer la box avec les deux acteurs concernés et les films qu'ils ont en commun
+   * @param firstActor : un acteur
+   * @param secondActor : un autre acteur
+   * @param films : les films qu'ils ont en commun
+   * @return la vbox a setter au stage
+   */
   public VBox displayFilmsCommunsBetweenTwoActors(Actor firstActor, Actor secondActor, List<Film> films) {
     // Titre avec noms des acteurs
     Label title = new Label("Films communs entre " + firstActor.getName() + " et " + secondActor.getName());
@@ -222,7 +218,14 @@ public class UIService {
     return box;
   }
 
-  public Parent displayActorsCommonBetweenTwoFilms(Film film1, Film film2, List<Actor> commonActors) {
+  /**
+   * créer la box avec les deux films concernés et les acteurs qu'ils ont en commun
+   * @param film1 : un film
+   * @param film2 : un film
+   * @param commonActors : les acteurs que ces deux films ont en commun
+   * @return la vbox a setter au stage
+   */
+  public VBox displayActorsCommonBetweenTwoFilms(Film film1, Film film2, List<Actor> commonActors) {
     // Titre principal
     Label title = new Label("Acteurs communs aux films : \"" + film1.getTitle() + "\" & \"" + film2.getTitle() + "\"");
     title.getStyleClass().add("title");
@@ -249,39 +252,16 @@ public class UIService {
     return root;
   }
 
-  public VBox makeBoxForInput(
-    String labelText,
-    String prompt1,
-    String prompt2,
-    String prompt3,
-    Runnable onValidate,
-    Runnable onBack) {
 
-    Label label = new Label(labelText);
-
-    TextField textField1 = new TextField();
-    textField1.setPromptText(prompt1);
-
-    TextField textField2 = new TextField();
-    textField2.setPromptText(prompt2);
-
-    TextField textField3 = new TextField();
-    textField3.setPromptText(prompt3);
-
-    Button validateBtn = new Button("Valider");
-    Button backBtn = new Button("< Retour");
-
-    validateBtn.setOnAction(e -> onValidate.run());
-    backBtn.setOnAction(e -> onBack.run());
-
-    VBox page = new VBox(15, label, textField1, textField2, textField3, validateBtn, backBtn);
-    page.setAlignment(Pos.CENTER);
-    page.setStyle("-fx-padding: 20;");
-
-    return page;
-  }
-
-  public Parent displayFilmsBetweenYearsAndActor(int yearStart, int yearEnd, Actor actor, List<Film> films) {
+  /**
+   * créer la box avec les films d'un acteur entre deux dates
+   * @param yearStart : année min
+   * @param yearEnd : année max
+   * @param actor : un acteur
+   * @param films  : liste des films a afficher
+   * @return la vbox a setter au stage
+   */
+  public VBox displayFilmsBetweenYearsAndActor(int yearStart, int yearEnd, Actor actor, List<Film> films) {
     // Titre principal
     Label title = new Label("Films de " + yearStart + " à " + yearEnd + " avec " + actor.getName());
     title.getStyleClass().add("title");

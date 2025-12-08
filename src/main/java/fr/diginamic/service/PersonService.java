@@ -16,6 +16,11 @@ public class PersonService {
     this.em = em;
   }
 
+  /**
+   * trouve une personne par son id imdb
+   * @param imdbId : identifiant unique du site imdb et des fichiers csv
+   * @return l'instance de Person ( director ou actor )
+   */
   public Person findByImdbId(String imdbId) {
     try {
       return em.createQuery(
@@ -29,6 +34,10 @@ public class PersonService {
     }
   }
 
+  /**
+   * persist une personne en base si elle n'y est pas déjà
+   * @return l'instance de Person ( director ou actor )
+   */
   public Person createIfNotExist(Person p) {
 
     // 1. rechercher si déjà en base

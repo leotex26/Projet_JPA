@@ -3,10 +3,7 @@ package fr.diginamic.service;
 import fr.diginamic.model.Country;
 import fr.diginamic.model.Place;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * gere la logique métier des Places

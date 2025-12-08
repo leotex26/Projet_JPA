@@ -22,7 +22,10 @@ public class GenreService {
   }
 
 
-
+  /**
+   * persist un genre en base si elle n'y est pas déjà
+   * @return l'instance de genre concerné
+   */
   public Genre createIfNotExist(String name) {
     if (name == null || name.isBlank()) return null;
 

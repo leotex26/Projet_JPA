@@ -7,7 +7,6 @@ import fr.diginamic.util.CSVReader;
 import jakarta.persistence.EntityManager;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class RoleService {

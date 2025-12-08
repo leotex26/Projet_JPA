@@ -134,8 +134,8 @@ public class FilmService {
 
   /**
    * permet de trouver un film par son identifiant imdb
-   * @param s
-   * @return
+   * @param s : identifiant imdb
+   * @return film concerné
    */
   public Film findByIMDB(String s) {
     if (s == null || s.isBlank()) return null;
@@ -153,7 +153,8 @@ public class FilmService {
 
 
   /**
-   *
+   * verifie si un film existe si ce n'est pas le cas, il l'implemente en base
+   * si c'est le cas le film passé en paramètre est update avec les bonnes infos
    * @param film
    * @return
    */
@@ -183,11 +184,16 @@ public class FilmService {
       return em.merge(existingFilm);
     }
 
-    // Sinon persister le nouveau film
+    // Sinon on persiste le nouveau film
     em.persist(film);
     return film;
   }
 
+  /**
+   * Trouver un film en base par son nom
+   * @param name : titre du film
+   * @return l'instance de film correspondante
+   */
   public Film findByName(String name) {
     name = name.trim().toLowerCase();
 
@@ -201,6 +207,12 @@ public class FilmService {
     return results.get(0);
   }
 
+  /**
+   * trouve tout les films tournés entre deux années
+   * @param yearStart : année min
+   * @param yearEnd : année max
+   * @return liste de films concernés
+   */
   public List<Film> findAllByDate(int yearStart, int yearEnd) {
     TypedQuery<Film> query = em.createQuery(
       "SELECT f FROM Film f WHERE f.yearStart BETWEEN :yearStart AND :yearEnd",
@@ -215,7 +227,12 @@ public class FilmService {
     return results.isEmpty() ? null : results;
   }
 
-
+  /**
+   * trouve les films commun a deux acteurs
+   * @param firstActor : premier acteur
+   * @param secondActor : second acteur
+   * @return liste de films concernés
+   */
   public List<Film> findAllByActor(Actor firstActor, Actor secondActor) {
 
     Set<Role> firstActorRoles = firstActor.getRoles();
@@ -233,6 +250,13 @@ public class FilmService {
     return films;
   }
 
+  /**
+   * trouve tout les films tournés entre deux années d'un acteur en particulier
+   * @param yearStart  : année min
+   * @param yearEnd  : année max
+   * @param actor : acteur concerné
+   * @return liste de films concernés
+   */
   public List<Film> findByDateAndActor(int yearStart, int yearEnd, Actor actor) {
     List<Film> films = findAllByDate(yearStart, yearEnd);
     List<Film> result = new ArrayList<>();

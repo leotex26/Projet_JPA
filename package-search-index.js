@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.diginamic"},{"l":"fr.diginamic.model"},{"l":"fr.diginamic.service"},{"l":"fr.diginamic.util"}];updateSearchResults();

@@ -89,7 +89,12 @@ public class ActorService {
     return null;
   }
 
-
+  /**
+   * Trouve acteur par nom
+   *
+   * @param name
+   * @return ateur
+   */
   public Actor findByName(String name) {
     name = name.trim().toLowerCase();
 
@@ -103,6 +108,13 @@ public class ActorService {
     return results.get(0);
   }
 
+  /**
+   * trouve tout les acteur communs à deux films
+   *
+   * @param film1
+   * @param film2
+   * @return la liste des acteurs
+   */
   public List<Actor> findCommonActorsBetweenFilms(Film film1, Film film2) {
     Set<Role> rolesFilm1 = film1.getRoles();
     Set<Role> rolesFilm2 = film2.getRoles();

@@ -49,6 +49,10 @@ public class Actor extends Person {
     this.roles = roles;
   }
 
+  public void addRole(Role role) {
+    roles.add(role);
+  }
+
 //----------------------------------------------------- METHODES --------------------------------------------------------------
 
 

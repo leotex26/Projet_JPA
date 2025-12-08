@@ -13,12 +13,10 @@
     <file>app.log</file>
     <append>true</append>
     <encoder>
+      <maxFileSize>5MB</maxFileSize>
       <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%logger{36}] - %msg%n</pattern>
     </encoder>
   </appender>
-
-
-
 
 
   <!--LOGGER LOAD_DATA_FROM_CSV -->

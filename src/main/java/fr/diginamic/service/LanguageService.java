@@ -2,8 +2,6 @@ package fr.diginamic.service;
 
 import fr.diginamic.model.Language;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -19,7 +17,10 @@ public class LanguageService {
     this.em = em;
   }
 
-
+  /**
+   * persist un language en base si elle n'y est pas déjà
+   * @return l'instance de Language concerné
+   */
   public Language createIfNotExist(String name) {
     if (name == null || name.isBlank()) return null;
 
