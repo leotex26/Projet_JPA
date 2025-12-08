@@ -12,6 +12,6 @@ Run la classe executable ```AppClient```
 
 ```https://leotex26.github.io/Projet_JPA/```
 
-Le doxument de conception est fourni dans le répertoire "/conception" à la racine du projet JPA
+Le document de conception est fourni dans le répertoire "/conception" à la racine du projet JPA
 
 
