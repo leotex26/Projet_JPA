@@ -6,7 +6,7 @@ L'interface JavaFX se lance via la classe executable ```AppClient``` qui lance Ã
 
 ## Pour lancer l'application
 
-Run la classe executable ```AppClient```
+faire ```mvn clean javafx:run```
 
 ## les informations de l'application
 
